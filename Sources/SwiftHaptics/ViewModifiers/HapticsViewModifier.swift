@@ -5,6 +5,7 @@ private struct HapticsViewModifier<Trigger: Equatable>: ViewModifier {
     private let trigger: Trigger
     private let haptics: () -> Haptics
 
+    @State private var hapticsEndDate: Date?
     @State private var hapticEngine: CHHapticEngine?
 
     init(
@@ -24,14 +25,19 @@ private struct HapticsViewModifier<Trigger: Equatable>: ViewModifier {
     }
 
     private func triggerHaptics() {
-        guard let hapticEngine else {
+        guard
+            let hapticEngine,
+            (hapticsEndDate ?? .distantPast) <= .now
+        else {
             return
         }
 
         do {
-            let pattern = try haptics().pattern
+            let haptics = haptics()
+            let pattern = try haptics.pattern
             let player = try hapticEngine.makePlayer(with: pattern)
             try player.start(atTime: .zero)
+            hapticsEndDate = .now.addingTimeInterval(haptics.duration)
         } catch {
             print(error)
         }
