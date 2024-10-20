@@ -10,6 +10,10 @@ public struct ContinuousHapticEvent: InternalHapticEvent {
     public let releaseTime: Double?
     public let sustained: Bool?
 
+    var actualDuration: Double {
+        duration + (releaseTime ?? .zero)
+    }
+
     public init(
         time: Double,
         duration: Double,

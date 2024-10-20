@@ -7,6 +7,12 @@ public struct Haptics {
         internalEvents
     }
 
+    public var duration: Double {
+        internalEvents
+            .map(\.actualEndTime)
+            .max() ?? .zero
+    }
+
     public init(events: [HapticEvent]) {
         self.internalEvents = events.compactMap {
             $0 as? InternalHapticEvent
