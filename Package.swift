@@ -4,6 +4,14 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftHaptics",
+    platforms: [
+        .iOS(.v13),
+        .macCatalyst(.v13),
+        .macOS(.v15),
+        .tvOS(.v13),
+        .visionOS(.v1),
+        .watchOS(.v6)
+    ],
     products: [
         .library(
             name: "SwiftHaptics",
