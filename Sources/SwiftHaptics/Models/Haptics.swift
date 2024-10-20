@@ -1,10 +1,14 @@
 import CoreHaptics
 
 public struct Haptics {
-    private let events: [InternalHapticEvent]
+    private let internalEvents: [InternalHapticEvent]
+
+    public var events: [HapticEvent] {
+        internalEvents
+    }
 
     public init(events: [HapticEvent]) {
-        self.events = events.compactMap {
+        self.internalEvents = events.compactMap {
             $0 as? InternalHapticEvent
         }
     }
@@ -12,7 +16,7 @@ public struct Haptics {
     var pattern: CHHapticPattern {
         get throws {
             try CHHapticPattern(
-                events: events.map(\.event),
+                events: internalEvents.map(\.event),
                 parameters: []
             )
         }
