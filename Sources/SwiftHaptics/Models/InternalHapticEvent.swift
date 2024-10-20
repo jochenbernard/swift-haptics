@@ -6,21 +6,9 @@ protocol InternalHapticEvent: HapticEvent {
     var decayTime: Double? { get }
     var releaseTime: Double? { get }
     var sustained: Bool? { get }
-
-    var actualStartTime: Double { get }
-    var actualDuration: Double { get }
-    var actualEndTime: Double { get }
 }
 
 extension InternalHapticEvent {
-    var actualStartTime: Double {
-        time
-    }
-
-    var actualEndTime: Double {
-        actualStartTime + actualDuration
-    }
-
     var parameters: [CHHapticEventParameter] {
         let parameters: [(id: CHHapticEvent.ParameterID, value: Double?)] = [
             (id: .hapticIntensity, value: intensity),

@@ -10,10 +10,6 @@ public struct TransientHapticEvent: InternalHapticEvent {
     var releaseTime: Double? { nil }
     var sustained: Bool? { nil }
 
-    var actualDuration: Double {
-        .zero
-    }
-
     init(
         time: Double,
         intensity: Double? = nil,

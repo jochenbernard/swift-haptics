@@ -33,11 +33,10 @@ private struct HapticsViewModifier<Trigger: Equatable>: ViewModifier {
         }
 
         do {
-            let haptics = haptics()
-            let pattern = try haptics.pattern
+            let pattern = try haptics().pattern
             let player = try hapticEngine.makePlayer(with: pattern)
             try player.start(atTime: .zero)
-            hapticsEndDate = .now.addingTimeInterval(haptics.duration)
+            hapticsEndDate = .now.addingTimeInterval(pattern.duration)
         } catch {
             print(error)
         }
