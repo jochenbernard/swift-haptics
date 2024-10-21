@@ -6,9 +6,16 @@ public protocol HapticPattern {
 }
 
 extension HapticPattern {
+    public func modifier(_ modifier: HapticPatternModifier) -> HapticPattern {
+        ModifiedHapticPattern(
+            hapticPattern: self,
+            modifier: modifier
+        )
+    }
+
     var hapticEvents: [HapticEvent] {
-        if let base = self as? BaseHapticPattern {
-            base.baseHapticEvents
+        if let basePattern = self as? BaseHapticPattern {
+            basePattern.baseHapticEvents
         } else {
             pattern.hapticEvents
         }

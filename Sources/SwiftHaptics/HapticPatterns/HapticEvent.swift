@@ -1,7 +1,7 @@
 import CoreHaptics
 
 protocol HapticEvent: BaseHapticPattern {
-    var time: Double { get }
+    var time: Double { get set }
     var intensity: Double? { get }
     var sharpness: Double? { get }
     var attackTime: Double? { get }
