@@ -2,8 +2,8 @@ import CoreHaptics
 
 public struct TransientHapticEvent: HapticEvent {
     var time: Double
-    let intensity: Double?
-    let sharpness: Double?
+    var intensity: Double?
+    var sharpness: Double?
 
     var attackTime: Double? { nil }
     var decayTime: Double? { nil }

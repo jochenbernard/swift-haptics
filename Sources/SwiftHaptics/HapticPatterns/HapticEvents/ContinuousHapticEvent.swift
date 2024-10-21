@@ -3,8 +3,8 @@ import CoreHaptics
 public struct ContinuousHapticEvent: HapticEvent {
     var time: Double
     let duration: Double
-    let intensity: Double?
-    let sharpness: Double?
+    var intensity: Double?
+    var sharpness: Double?
     let attackTime: Double?
     let decayTime: Double?
     let releaseTime: Double?
