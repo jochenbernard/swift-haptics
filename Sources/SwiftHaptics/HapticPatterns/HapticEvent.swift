@@ -1,15 +1,23 @@
 import CoreHaptics
 
-protocol InternalHapticEvent: HapticEvent {
-    var event: CHHapticEvent { get }
+protocol HapticEvent: BaseHapticPattern {
+    var time: Double { get }
+    var intensity: Double? { get }
+    var sharpness: Double? { get }
     var attackTime: Double? { get }
     var decayTime: Double? { get }
     var releaseTime: Double? { get }
     var sustained: Bool? { get }
+
+    var coreEvent: CHHapticEvent { get }
 }
 
-extension InternalHapticEvent {
-    var parameters: [CHHapticEventParameter] {
+extension HapticEvent {
+    var baseHapticEvents: [HapticEvent] {
+        [self]
+    }
+
+    var coreParameters: [CHHapticEventParameter] {
         let parameters: [(id: CHHapticEvent.ParameterID, value: Double?)] = [
             (id: .hapticIntensity, value: intensity),
             (id: .hapticSharpness, value: sharpness),

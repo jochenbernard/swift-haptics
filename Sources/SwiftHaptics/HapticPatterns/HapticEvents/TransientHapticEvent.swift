@@ -1,6 +1,6 @@
 import CoreHaptics
 
-public struct TransientHapticEvent: InternalHapticEvent {
+public struct TransientHapticEvent: HapticEvent {
     public let time: Double
     public let intensity: Double?
     public let sharpness: Double?
@@ -20,10 +20,10 @@ public struct TransientHapticEvent: InternalHapticEvent {
         self.sharpness = sharpness
     }
 
-    var event: CHHapticEvent {
+    var coreEvent: CHHapticEvent {
         CHHapticEvent(
             eventType: .hapticTransient,
-            parameters: parameters,
+            parameters: coreParameters,
             relativeTime: time
         )
     }

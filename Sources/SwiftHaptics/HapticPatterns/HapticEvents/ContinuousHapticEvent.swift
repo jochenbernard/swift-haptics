@@ -1,6 +1,6 @@
 import CoreHaptics
 
-public struct ContinuousHapticEvent: InternalHapticEvent {
+public struct ContinuousHapticEvent: HapticEvent {
     public let time: Double
     public let duration: Double
     public let intensity: Double?
@@ -30,10 +30,10 @@ public struct ContinuousHapticEvent: InternalHapticEvent {
         self.sustained = sustained
     }
 
-    var event: CHHapticEvent {
+    var coreEvent: CHHapticEvent {
         CHHapticEvent(
             eventType: .hapticContinuous,
-            parameters: parameters,
+            parameters: coreParameters,
             relativeTime: time,
             duration: duration
         )

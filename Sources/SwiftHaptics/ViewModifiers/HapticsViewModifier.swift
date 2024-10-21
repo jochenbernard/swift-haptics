@@ -3,17 +3,17 @@ import CoreHaptics
 
 private struct HapticsViewModifier<Trigger: Equatable>: ViewModifier {
     private let trigger: Trigger
-    private let haptics: () -> Haptics
+    private let hapticPattern: () -> HapticPattern
 
     @State private var hapticsEndDate: Date?
     @State private var hapticEngine: CHHapticEngine?
 
     init(
         trigger: Trigger,
-        @HapticsBuilder haptics: @escaping () -> Haptics
+        @HapticPatternBuilder hapticPattern: @escaping () -> HapticPattern
     ) {
         self.trigger = trigger
-        self.haptics = haptics
+        self.hapticPattern = hapticPattern
     }
 
     func body(content: Content) -> some View {
@@ -33,7 +33,7 @@ private struct HapticsViewModifier<Trigger: Equatable>: ViewModifier {
         }
 
         do {
-            let pattern = try haptics().pattern
+            let pattern = try hapticPattern().corePattern
             let player = try hapticEngine.makePlayer(with: pattern)
             try player.start(atTime: .zero)
             hapticsEndDate = .now.addingTimeInterval(pattern.duration)
@@ -76,12 +76,12 @@ private struct HapticsViewModifier<Trigger: Equatable>: ViewModifier {
 public extension View {
     func haptics(
         trigger: some Equatable,
-        @HapticsBuilder haptics: @escaping () -> Haptics
+        @HapticPatternBuilder hapticPattern: @escaping () -> HapticPattern
     ) -> some View {
         modifier(
             HapticsViewModifier(
                 trigger: trigger,
-                haptics: haptics
+                hapticPattern: hapticPattern
             )
         )
     }
