@@ -2,12 +2,12 @@ import CoreHaptics
 
 public struct ContinuousHapticEvent: HapticEvent {
     var time: Double
-    let duration: Double
+    var duration: Double
     var intensity: Double?
     var sharpness: Double?
-    let attackTime: Double?
-    let decayTime: Double?
-    let releaseTime: Double?
+    var attackTime: Double?
+    var decayTime: Double?
+    var releaseTime: Double?
     let sustained: Bool?
 
     public init(
