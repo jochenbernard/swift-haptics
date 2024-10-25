@@ -50,16 +50,7 @@ struct TransientHapticEventTests {
         let coreEvent = transientHapticEvent.coreEvent
         let expectedCoreEvent = CHHapticEvent(
             eventType: .hapticTransient,
-            parameters: [
-                CHHapticEventParameter(
-                    parameterID: .hapticIntensity,
-                    value: 3.0
-                ),
-                CHHapticEventParameter(
-                    parameterID: .hapticSharpness,
-                    value: 4.0
-                )
-            ],
+            parameters: transientHapticEvent.coreParameters,
             relativeTime: 2.0
         )
 

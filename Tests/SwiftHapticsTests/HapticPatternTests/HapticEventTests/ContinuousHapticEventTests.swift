@@ -60,32 +60,7 @@ struct ContinuousHapticEventTests {
         let coreEvent = continuousHapticEvent.coreEvent
         let expectedCoreEvent = CHHapticEvent(
             eventType: .hapticContinuous,
-            parameters: [
-                CHHapticEventParameter(
-                    parameterID: .hapticIntensity,
-                    value: 4.0
-                ),
-                CHHapticEventParameter(
-                    parameterID: .hapticSharpness,
-                    value: 5.0
-                ),
-                CHHapticEventParameter(
-                    parameterID: .attackTime,
-                    value: 6.0
-                ),
-                CHHapticEventParameter(
-                    parameterID: .decayTime,
-                    value: 7.0
-                ),
-                CHHapticEventParameter(
-                    parameterID: .releaseTime,
-                    value: 8.0
-                ),
-                CHHapticEventParameter(
-                    parameterID: .sustained,
-                    value: 1.0
-                )
-            ],
+            parameters: continuousHapticEvent.coreParameters,
             relativeTime: 2.0,
             duration: 3.0
         )
