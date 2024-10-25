@@ -1,5 +1,5 @@
 struct HapticPatternList: BaseHapticPattern {
-    private let patterns: [HapticPattern]
+    let patterns: [HapticPattern]
 
     init(patterns: [HapticPattern]) {
         self.patterns = patterns

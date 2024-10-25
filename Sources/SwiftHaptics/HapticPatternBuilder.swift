@@ -1,7 +1,14 @@
 @resultBuilder
 public struct HapticPatternBuilder {
     public static func buildArray(_ patterns: [HapticPattern]) -> HapticPattern {
-        HapticPatternList(patterns: patterns)
+        switch patterns.count {
+        case 0:
+            EmptyHapticPattern()
+        case 1:
+            patterns[0]
+        default:
+            HapticPatternList(patterns: patterns)
+        }
     }
 
     public static func buildOptional(_ pattern: HapticPattern?) -> HapticPattern {
@@ -21,6 +28,6 @@ public struct HapticPatternBuilder {
     }
 
     public static func buildBlock(_ patterns: HapticPattern...) -> HapticPattern {
-        HapticPatternList(patterns: patterns)
+        buildArray(patterns)
     }
 }

@@ -1,5 +1,5 @@
 public struct HapticPatternGroup: HapticPattern {
-    private let hapticPattern: () -> HapticPattern
+    let hapticPattern: () -> HapticPattern
 
     public init(@HapticPatternBuilder hapticPattern: @escaping () -> HapticPattern) {
         self.hapticPattern = hapticPattern
