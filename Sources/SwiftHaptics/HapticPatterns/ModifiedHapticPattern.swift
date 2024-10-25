@@ -1,6 +1,6 @@
 struct ModifiedHapticPattern: BaseHapticPattern {
-    private let hapticPattern: HapticPattern
-    private let modifier: HapticPatternModifier
+    let hapticPattern: HapticPattern
+    let modifier: HapticPatternModifier
 
     init(
         hapticPattern: HapticPattern,
