@@ -1,7 +1,7 @@
 import Foundation
 
-private struct DelayHapticPatternModifier: BaseHapticPatternModifier {
-    private let delay: TimeInterval
+struct DelayHapticPatternModifier: BaseHapticPatternModifier {
+    let delay: TimeInterval
 
     init(_ delay: TimeInterval) {
         self.delay = delay

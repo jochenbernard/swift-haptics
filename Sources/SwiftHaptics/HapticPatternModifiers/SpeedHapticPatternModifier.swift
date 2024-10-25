@@ -1,5 +1,5 @@
-private struct SpeedHapticPatternModifier: BaseHapticPatternModifier {
-    private let speed: Double
+struct SpeedHapticPatternModifier: BaseHapticPatternModifier {
+    let speed: Double
 
     init(_ speed: Double) {
         self.speed = speed

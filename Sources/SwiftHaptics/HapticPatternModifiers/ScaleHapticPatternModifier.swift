@@ -1,6 +1,6 @@
-private struct ScaleHapticPatternModifier: BaseHapticPatternModifier {
-    private let intensityScale: Double
-    private let sharpnessScale: Double
+struct ScaleHapticPatternModifier: BaseHapticPatternModifier {
+    let intensityScale: Double
+    let sharpnessScale: Double
 
     init(
         intensity intensityScale: Double,
