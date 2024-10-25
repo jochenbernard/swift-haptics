@@ -90,10 +90,6 @@ struct ContinuousHapticEventTests {
             duration: 3.0
         )
 
-        #expect(coreEvent.type == expectedCoreEvent.type)
-        #expect(coreEvent.eventParameters.map(\.parameterID) == expectedCoreEvent.eventParameters.map(\.parameterID))
-        #expect(coreEvent.eventParameters.map(\.value) == expectedCoreEvent.eventParameters.map(\.value))
-        #expect(coreEvent.relativeTime == expectedCoreEvent.relativeTime)
-        #expect(coreEvent.duration == expectedCoreEvent.duration)
+        #expect(coreEvent.testable == expectedCoreEvent.testable)
     }
 }

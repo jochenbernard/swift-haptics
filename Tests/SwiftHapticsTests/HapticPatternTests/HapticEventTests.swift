@@ -64,7 +64,6 @@ struct HapticEventTests {
             )
         ]
 
-        #expect(coreParameters.map(\.parameterID) == expectedCoreParameters.map(\.parameterID))
-        #expect(coreParameters.map(\.value) == expectedCoreParameters.map(\.value))
+        #expect(coreParameters.map(\.testable) == expectedCoreParameters.map(\.testable))
     }
 }
