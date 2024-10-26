@@ -2,13 +2,13 @@ import CoreHaptics
 
 /// A haptic event with a looped waveform of arbitrary length.
 public struct ContinuousHapticEvent: HapticEvent {
-    var time: Double
-    var duration: Double
+    var time: TimeInterval
+    var duration: TimeInterval
     var intensity: Double?
     var sharpness: Double?
-    var attackTime: Double?
-    var decayTime: Double?
-    var releaseTime: Double?
+    var attackTime: TimeInterval?
+    var decayTime: TimeInterval?
+    var releaseTime: TimeInterval?
     let sustained: Bool?
 
     /// Creates a continuous haptic event.
@@ -29,13 +29,13 @@ public struct ContinuousHapticEvent: HapticEvent {
     ///                haptic event for its specified duration. The default
     ///                value is `nil`.
     public init(
-        time: Double,
-        duration: Double,
+        time: TimeInterval,
+        duration: TimeInterval,
         intensity: Double? = nil,
         sharpness: Double? = nil,
-        attackTime: Double? = nil,
-        decayTime: Double? = nil,
-        releaseTime: Double? = nil,
+        attackTime: TimeInterval? = nil,
+        decayTime: TimeInterval? = nil,
+        releaseTime: TimeInterval? = nil,
         sustained: Bool? = nil
     ) {
         self.time = time

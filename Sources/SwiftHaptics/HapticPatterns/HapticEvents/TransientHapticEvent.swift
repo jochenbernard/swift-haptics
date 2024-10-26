@@ -3,13 +3,13 @@ import CoreHaptics
 /// A brief impulse occurring at a specific point in time, like the feedback
 /// from toggling a switch.
 public struct TransientHapticEvent: HapticEvent {
-    var time: Double
+    var time: TimeInterval
     var intensity: Double?
     var sharpness: Double?
 
-    var attackTime: Double? { nil }
-    var decayTime: Double? { nil }
-    var releaseTime: Double? { nil }
+    var attackTime: TimeInterval? { nil }
+    var decayTime: TimeInterval? { nil }
+    var releaseTime: TimeInterval? { nil }
     var sustained: Bool? { nil }
 
     /// Creates a transient haptic event.
@@ -20,7 +20,7 @@ public struct TransientHapticEvent: HapticEvent {
     ///                `nil`.
     ///   - sharpness: The feel of the haptic event. The default value is `nil`.
     public init(
-        time: Double,
+        time: TimeInterval,
         intensity: Double? = nil,
         sharpness: Double? = nil
     ) {

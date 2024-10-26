@@ -1,12 +1,12 @@
 import CoreHaptics
 
 protocol HapticEvent: BaseHapticPattern {
-    var time: Double { get set }
+    var time: TimeInterval { get set }
     var intensity: Double? { get set }
     var sharpness: Double? { get set }
-    var attackTime: Double? { get }
-    var decayTime: Double? { get }
-    var releaseTime: Double? { get }
+    var attackTime: TimeInterval? { get }
+    var decayTime: TimeInterval? { get }
+    var releaseTime: TimeInterval? { get }
     var sustained: Bool? { get }
 
     var coreEvent: CHHapticEvent { get }
