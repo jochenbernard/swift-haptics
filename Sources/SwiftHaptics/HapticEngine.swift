@@ -1,9 +1,11 @@
 import CoreHaptics
 
+/// An object that represents the connection to the haptic server.
 public class HapticEngine {
     private let hapticEngine: CHHapticEngine?
     private var hapticPatternEndDate: Date?
 
+    /// Creates a haptic engine.
     public init() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else {
             hapticEngine = nil
@@ -41,6 +43,11 @@ public class HapticEngine {
         }
     }
 
+    /// Plays a haptic pattern.
+    ///
+    /// - Parameters:
+    ///   - hapticPattern: A ``SwiftHaptics/HapticPatternBuilder`` that produces
+    ///                    the haptic pattern to play.
     public func play(@HapticPatternBuilder hapticPattern: () -> HapticPattern) {
         guard
             let hapticEngine,
@@ -59,6 +66,10 @@ public class HapticEngine {
         }
     }
 
+    /// Plays a haptic pattern.
+    ///
+    /// - Parameters:
+    ///   - hapticPattern: The haptic pattern to play.
     public func play(hapticPattern: HapticPattern) {
         play {
             hapticPattern

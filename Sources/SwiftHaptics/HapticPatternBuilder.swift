@@ -1,3 +1,4 @@
+/// A custom parameter attribute that constructs haptic patterns from closures.
 @resultBuilder
 public struct HapticPatternBuilder {
     public static func buildArray(_ patterns: [HapticPattern]) -> HapticPattern {

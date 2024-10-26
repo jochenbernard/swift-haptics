@@ -28,6 +28,13 @@ struct SpeedHapticPatternModifier: BaseHapticPatternModifier {
 }
 
 public extension HapticPattern {
+    /// Changes the duration of this haptic pattern by adjusting its speed.
+    ///
+    /// - Parameters:
+    ///   - speed: The speed at which to play the haptic pattern.
+    ///
+    /// - Returns:
+    ///   A haptic pattern with the adjusted speed.
     func speed(_ speed: Double) -> HapticPattern {
         modifier(SpeedHapticPatternModifier(speed))
     }

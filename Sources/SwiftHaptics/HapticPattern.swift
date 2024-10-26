@@ -1,11 +1,21 @@
 import CoreHaptics
 
+/// A type that represents a haptic pattern and provides modifiers that you use
+/// to configure haptics.
 public protocol HapticPattern {
+    /// The pattern of the haptics.
     @HapticPatternBuilder
     var pattern: HapticPattern { get }
 }
 
 extension HapticPattern {
+    /// Applies a modifier to a haptic pattern and returns a new haptic pattern.
+    ///
+    /// - Parameters:
+    ///   - modifier: The modifier to apply to this haptic pattern.
+    ///
+    /// - Returns:
+    ///   A haptic pattern with the applied modifier.
     public func modifier(_ modifier: HapticPatternModifier) -> HapticPattern {
         ModifiedHapticPattern(
             hapticPattern: self,

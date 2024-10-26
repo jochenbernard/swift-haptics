@@ -25,6 +25,17 @@ struct ScaleHapticPatternModifier: BaseHapticPatternModifier {
 }
 
 public extension HapticPattern {
+    /// Scales this haptic pattern's intensity and sharpness by the given
+    /// amounts.
+    ///
+    /// - Parameters:
+    ///   - intensity: The amount to scale the intensity. The default value is
+    ///                `1.0`.
+    ///   - sharpness: The amount to scale the sharpness. The default value is
+    ///                `1.0`
+    ///
+    /// - Returns:
+    ///   A haptic pattern with the scaled intensity and sharpness.
     func scale(
         intensity intensityScale: Double = 1.0,
         sharpness sharpnessScale: Double = 1.0
