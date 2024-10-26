@@ -4,7 +4,9 @@ import Testing
 
 struct BaseHapticPatternModifierTests {
     let baseHapticPatternModifier = MockBaseHapticPatternModifier(
-        hapticEvents: [MockHapticEvent.mock]
+        hapticEvents: [
+            MockHapticEvent.mock
+        ]
     )
 
     @Test

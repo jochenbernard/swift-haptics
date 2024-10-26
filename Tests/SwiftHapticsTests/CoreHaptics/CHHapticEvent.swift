@@ -29,11 +29,11 @@ extension CHHapticEvent {
         }
 
         init(_ event: [CHHapticPattern.Key: Any]) {
-            let parameters = event[.eventParameters] as! [[CHHapticPattern.Key: Any]]
+            let eventParameters = event[.eventParameters] as! [[CHHapticPattern.Key: Any]]
 
             self.init(
                 type: event[.eventType] as! CHHapticEvent.EventType,
-                eventParameters: parameters.map(CHHapticEventParameter.Testable.init),
+                eventParameters: eventParameters.map(CHHapticEventParameter.Testable.init),
                 relativeTime: event[.time] as! TimeInterval,
                 duration: event[.eventDuration] as! TimeInterval
             )
