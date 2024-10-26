@@ -5,8 +5,7 @@ private struct HapticsViewModifier<Trigger: Equatable>: ViewModifier {
     private let trigger: Trigger
     private let hapticPattern: () -> HapticPattern
 
-    @State private var hapticsEndDate: Date?
-    @State private var hapticEngine: CHHapticEngine?
+    @State private var hapticEngine = HapticEngine()
 
     init(
         trigger: Trigger,
@@ -16,59 +15,18 @@ private struct HapticsViewModifier<Trigger: Equatable>: ViewModifier {
         self.hapticPattern = hapticPattern
     }
 
+    init(
+        trigger: Trigger,
+        hapticPattern: HapticPattern
+    ) {
+        self.init(trigger: trigger) {
+            hapticPattern
+        }
+    }
+
     func body(content: Content) -> some View {
-        content
-            .task(createHapticEngine)
-            .onChange(of: trigger) { _ in
-                triggerHaptics()
-            }
-    }
-
-    private func triggerHaptics() {
-        guard
-            let hapticEngine,
-            (hapticsEndDate ?? .distantPast) <= .now
-        else {
-            return
-        }
-
-        do {
-            let pattern = try hapticPattern().corePattern
-            let player = try hapticEngine.makePlayer(with: pattern)
-            try player.start(atTime: .zero)
-            hapticsEndDate = .now.addingTimeInterval(pattern.duration)
-        } catch {
-            print(error)
-        }
-    }
-
-    private func createHapticEngine() {
-        guard
-            self.hapticEngine == nil,
-            CHHapticEngine.capabilitiesForHardware().supportsHaptics
-        else {
-            return
-        }
-
-        do {
-            let hapticEngine = try CHHapticEngine()
-            hapticEngine.resetHandler = resetHapticEngine
-            self.hapticEngine = hapticEngine
-            try hapticEngine.start()
-        } catch {
-            print(error)
-        }
-    }
-
-    private func resetHapticEngine() {
-        guard let hapticEngine else {
-            return
-        }
-
-        do {
-            try hapticEngine.start()
-        } catch {
-            print(error)
+        content.onChange(of: trigger) { _ in
+            hapticEngine.play(hapticPattern: hapticPattern)
         }
     }
 }
@@ -77,6 +35,18 @@ public extension View {
     func haptics(
         trigger: some Equatable,
         @HapticPatternBuilder hapticPattern: @escaping () -> HapticPattern
+    ) -> some View {
+        modifier(
+            HapticsViewModifier(
+                trigger: trigger,
+                hapticPattern: hapticPattern
+            )
+        )
+    }
+
+    func haptics(
+        trigger: some Equatable,
+        hapticPattern: HapticPattern
     ) -> some View {
         modifier(
             HapticsViewModifier(
