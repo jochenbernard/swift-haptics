@@ -34,7 +34,7 @@ public extension HapticPattern {
     ///   - speed: The speed at which to play the haptic pattern.
     ///
     /// - Returns:
-    ///   A haptic pattern with the adjusted speed.
+    ///   The haptic pattern with the adjusted speed.
     func speed(_ speed: Double) -> HapticPattern {
         modifier(SpeedHapticPatternModifier(speed))
     }

@@ -20,14 +20,14 @@ struct MutedHapticPatternModifier: BaseHapticPatternModifier {
 }
 
 public extension HapticPattern {
-    /// Mutes this haptic pattern
+    /// Conditionally mutes this haptic pattern
     ///
     /// - Parameters:
     ///   - muted: Whether the haptic pattern is muted. The default value is
     ///            `true`.
     ///
     /// - Returns:
-    ///   A haptic pattern that is muted.
+    ///   The haptic pattern that is conditionally muted.
     func muted(_ muted: Bool = true) -> HapticPattern {
         modifier(MutedHapticPatternModifier(muted))
     }

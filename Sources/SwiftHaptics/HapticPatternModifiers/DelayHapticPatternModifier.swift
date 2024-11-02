@@ -25,7 +25,7 @@ public extension HapticPattern {
     ///            pattern.
     ///
     /// - Returns:
-    ///   A haptic pattern with a delayed start.
+    ///   The haptic pattern with a delayed start.
     func delay(_ delay: TimeInterval) -> HapticPattern {
         modifier(DelayHapticPatternModifier(delay))
     }

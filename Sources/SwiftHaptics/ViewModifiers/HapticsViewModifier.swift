@@ -32,6 +32,13 @@ private struct HapticsViewModifier<Trigger: Equatable>: ViewModifier {
 }
 
 public extension View {
+    /// Plays the specified haptic pattern when the provided trigger value
+    /// changes.
+    ///
+    /// - Parameters:
+    ///   - trigger: A value to monitor for changes to determine when to play.
+    ///   - hapticPattern: A ``SwiftHaptics/HapticPatternBuilder`` that produces
+    ///                    the haptic pattern to play.
     func haptics(
         trigger: some Equatable,
         @HapticPatternBuilder hapticPattern: @escaping () -> HapticPattern
@@ -44,6 +51,12 @@ public extension View {
         )
     }
 
+    /// Plays the specified haptic pattern when the provided trigger value
+    /// changes.
+    ///
+    /// - Parameters:
+    ///   - trigger: A value to monitor for changes to determine when to play.
+    ///   - hapticPattern: The haptic pattern to play.
     func haptics(
         trigger: some Equatable,
         hapticPattern: HapticPattern

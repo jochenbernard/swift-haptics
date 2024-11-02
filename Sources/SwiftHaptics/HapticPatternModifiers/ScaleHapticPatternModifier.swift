@@ -35,7 +35,7 @@ public extension HapticPattern {
     ///                `1.0`
     ///
     /// - Returns:
-    ///   A haptic pattern with the scaled intensity and sharpness.
+    ///   The haptic pattern with the scaled intensity and sharpness.
     func scale(
         intensity intensityScale: Double = 1.0,
         sharpness sharpnessScale: Double = 1.0

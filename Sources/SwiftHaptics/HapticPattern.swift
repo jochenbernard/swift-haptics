@@ -9,13 +9,14 @@ public protocol HapticPattern {
 }
 
 extension HapticPattern {
-    /// Applies a modifier to a haptic pattern and returns a new haptic pattern.
+    /// Applies a modifier to this haptic pattern and returns a new haptic
+    /// pattern.
     ///
     /// - Parameters:
-    ///   - modifier: The modifier to apply to this haptic pattern.
+    ///   - modifier: The modifier to apply to the haptic pattern.
     ///
     /// - Returns:
-    ///   A haptic pattern with the applied modifier.
+    ///   The haptic pattern with the applied modifier.
     public func modifier(_ modifier: HapticPatternModifier) -> HapticPattern {
         ModifiedHapticPattern(
             hapticPattern: self,
